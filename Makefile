@@ -1,17 +1,21 @@
 CC = gcc
 CFLAGS = -Wall -g
 
-SRC = src/mmu.c src/main.c
-TEST_SRC = tests/test_mmu.c
+SRC = src/mmu.c
+MAIN_SRC = $(SRC) src/main.c
+TEST_SRC = $(SRC) tests/test_mmu.c
 OBJ = $(SRC:.c=.o)
 
 all: mmu test
 
-mmu: $(OBJ)
-	$(CC) $(CFLAGS) -o mmu $(OBJ)
+mmu: $(MAIN_SRC:.c=.o)
+	$(CC) $(CFLAGS) -o mmu $^
 
-test: $(SRC) $(TEST_SRC)
-	$(CC) $(CFLAGS) -o test $(SRC) $(TEST_SRC)
+test: $(TEST_SRC:.c=.o)
+	$(CC) $(CFLAGS) -o test $^
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f mmu test $(OBJ)
+	rm -f mmu test $(OBJ) src/*.o tests/*.o
