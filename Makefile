@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -g
 
-SRC = src/mmu.c
+SRC = src/mmu.c src/main.c
 TEST_SRC = tests/test_mmu.c
 OBJ = $(SRC:.c=.o)
 

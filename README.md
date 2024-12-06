@@ -37,4 +37,3 @@ Run the tests:
 ```
 
 #### slides/presentation.pptx
-**Placeholder:** Create slides on Virtual Memory Concepts, Address Translation, Page Replacement Policies, and Project Workflow.
